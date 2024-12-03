@@ -6,6 +6,16 @@ let text = "";
 const period = 2000;
 const delta = 300;
 const rotatingText = document.getElementById('rotating-text');
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+
+galleryItems.forEach(item => {
+    item.addEventListener('click', function() {
+        // Toggle the expanded class
+        item.classList.toggle('expanded');
+    });
+});
+
 
 function tick() {
     let i = loopNum % toRotate.length;
