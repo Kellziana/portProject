@@ -8,14 +8,16 @@ const delta = 300;
 const rotatingText = document.getElementById('rotating-text');
 const galleryItems = document.querySelectorAll('.gallery-item');
 
-
 galleryItems.forEach(item => {
-    item.addEventListener('click', function() {
-        // Toggle the expanded class
-        item.classList.toggle('expanded');
+    item.addEventListener('click', function () {
+        // Check if the screen width is greater than 768px (not a mobile device)
+        if (window.innerWidth > 768) {
+            item.classList.toggle('expanded');
+        } else {
+            console.log("Expand feature is disabled on mobile.");
+        }
     });
 });
-
 
 function tick() {
     let i = loopNum % toRotate.length;
@@ -38,7 +40,6 @@ function tick() {
 
 tick();
 
-
 // Gallery filtering logic
 function filterGallery(category) {
     const galleryItems = document.querySelectorAll('.gallery-item');
@@ -57,10 +58,8 @@ function filterGallery(category) {
             item.style.display = 'block';
         }
     });
-
-
 }
 
-document.querySelector('.navbar').addEventListener('click', function() {
+document.querySelector('.navbar').addEventListener('click', function () {
     this.classList.toggle('show-menu');
 });
